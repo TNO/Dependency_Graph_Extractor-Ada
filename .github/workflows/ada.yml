@@ -21,3 +21,6 @@ jobs:
 
     - name: Build
       run: cd src && alr build
+
+    - name: Example project to analyze
+      run: cd tests/syntax_examples && alr build

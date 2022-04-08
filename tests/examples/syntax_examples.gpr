@@ -1,4 +1,4 @@
-with "../../../../libraries/Rejuvenation_Lib/rejuvenation_lib.gpr";
+with "config/syntax_examples_config.gpr";
 
 project Syntax_Examples is
 
