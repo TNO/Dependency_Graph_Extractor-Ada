@@ -1,6 +1,6 @@
 name = "dependency_graph_extractor"
 description = "Extract dependency information from Ada projects"
-version = "0.0.0"
+version = "0.1.0"
 licenses = "BSD-3-Clause"
 website = "https://github.com/TNO/Renaissance-Ada"
 tags = ["extract", "dependency", "analysis", "graphml"]
