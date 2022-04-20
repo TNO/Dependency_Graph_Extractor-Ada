@@ -20,6 +20,7 @@ with Extraction.Subp_Overrides;
 with Extraction.Decl_Types;
 with Extraction.Utilities;
 with Extraction.With_Clauses;
+with Langkit_Support.Text;
 
 package body Extraction is
 
@@ -74,6 +75,8 @@ package body Extraction is
          --  TODO: Remove exception block once all libadalang problems
          --        have been fixed.
          begin
+            Ada.Text_IO.Put_Line
+              (Langkit_Support.Text.Image (Node.Full_Sloc_Image));
             Decls.Extract_Nodes (Node, Graph);
             Subp_Overrides.Extract_Nodes (Node, Graph);
             Primitive_Subps.Extract_Nodes (Node, Graph);
@@ -135,7 +138,12 @@ package body Extraction is
 
       for Unit of Units loop
          Ada.Text_IO.Put_Line ("-- " & Unit.Get_Filename & " --");
-         Unit.Root.Traverse (Node_Visitor'Access);
+         if Unit.Get_Filename =
+           "C:\path\to\Dependency_Graph_Extractor-Ada\alire\cache\" &
+             "dependencies\libadalang_22.0.0_5f365aa4\src\libadalang-common.adb"
+         then
+            Unit.Root.Traverse (Node_Visitor'Access);
+         end if;
       end loop;
 
       --  Edge extraction.

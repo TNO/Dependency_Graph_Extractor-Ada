@@ -1,4 +1,5 @@
 with Ada.Characters.Handling;
+with Ada.Text_IO;
 with GNAT.OS_Lib;
 with GNATCOLL.VFS_Utils;
 with Libadalang.Project_Provider;
@@ -205,22 +206,27 @@ package body Extraction.Utilities is
 
    function Get_Referenced_Decl (Name : LAL.Name'Class) return LAL.Basic_Decl
    is
-      Referenced_Decl : constant LAL.Basic_Decl := Name.P_Referenced_Decl;
    begin
-      if Referenced_Decl.Is_Null then
-         return Referenced_Decl;
-      end if;
+      Ada.Text_IO.Put_Line ("Get_Referenced_Decl");
+      declare
+         Referenced_Decl : constant LAL.Basic_Decl := Name.P_Referenced_Decl;
+      begin
+         Ada.Text_IO.Put_Line ("After P_Referenced_Decl");
+         if Referenced_Decl.Is_Null then
+            return Referenced_Decl;
+         end if;
 
-      --  In the case of a subprogram library unit use the specification and
-      --  not the body when (a) the specification exists and (b) Name does
-      --  not occur in the same unit as the body.
-      if Is_Subp_Body_Unit_With_Spec (Referenced_Decl)
-        and then Name.Unit.Root /= Referenced_Decl.Unit.Root
-      then
-         return Referenced_Decl.P_Previous_Part_For_Decl;
-      else
-         return Referenced_Decl;
-      end if;
+         --  In the case of a subprogram library unit use the specification and
+         --  not the body when (a) the specification exists and (b) Name does
+         --  not occur in the same unit as the body.
+         if Is_Subp_Body_Unit_With_Spec (Referenced_Decl)
+           and then Name.Unit.Root /= Referenced_Decl.Unit.Root
+         then
+            return Referenced_Decl.P_Previous_Part_For_Decl;
+         else
+            return Referenced_Decl;
+         end if;
+      end;
    end Get_Referenced_Decl;
 
    function Get_Referenced_Defining_Name
