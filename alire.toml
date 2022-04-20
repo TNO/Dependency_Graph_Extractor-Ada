@@ -9,5 +9,7 @@ authors = ["Jeroen Ketema", "Pierre van de Laar"]
 maintainers = ["Pierre van de Laar <pierre.van.de.laar@gmail.com>"]
 maintainers-logins = ["pjljvandelaar"]
 
+executables = ["dependency_graph_extractor"]
+
 [[depends-on]]
 libadalang = "^22.0.0"
