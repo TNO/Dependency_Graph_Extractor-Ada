@@ -149,6 +149,25 @@ ORDER BY depCount DESC
 to get the declarations outside the Dependency_Graph_Extractor project,
 that are used by the Dependency_Graph_Extractor project
 together with their number of references.
+The textual output is similar to
+```
+╒══════════════════════════════════════════════════════════════════════╤══════════╕
+│"dep.fullyQualifiedName"                                              │"depCount"│
+╞══════════════════════════════════════════════════════════════════════╪══════════╡
+│"Libadalang.Analysis.Ada_Node"                                        │67        │
+├──────────────────────────────────────────────────────────────────────┼──────────┤
+│"Libadalang.Analysis.Basic_Decl"                                      │61        │
+├──────────────────────────────────────────────────────────────────────┼──────────┤
+│"GNATCOLL.VFS.Virtual_File"                                           │46        │
+├──────────────────────────────────────────────────────────────────────┼──────────┤
+│"Libadalang.Analysis.Kind"                                            │41        │
+├──────────────────────────────────────────────────────────────────────┼──────────┤
+│"GNATCOLL.Projects.Project_Type"                                      │24        │
+├──────────────────────────────────────────────────────────────────────┼──────────┤
+│"Libadalang.Analysis.Defining_Name"                                   │23        │
+├──────────────────────────────────────────────────────────────────────┼──────────┤
+...
+```
 
 ## Building
 
