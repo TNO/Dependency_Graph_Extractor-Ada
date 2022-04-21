@@ -131,6 +131,25 @@ RETURN user, provider
 ```
 to get the declarations in "rejuvenation-string_utils.ads" that are referenced together with the refering entities.
 
+#### Refering external declarations
+
+Run the [Cypher](https://neo4j.com/developer/cypher/) query
+```cypher
+MATCH
+  (depProject:GnatProject)-[:Contains]->(depFile)<-[:Source]-(dep:AdaDeclaration),
+  (dge)-[:References]->(dep),
+  (dgeProject:GnatProject)-[:Contains]->(dgeFile)<-[:Source]-(dge:AdaDeclaration)
+WHERE 
+  depProject.relativeName <> "Dependency_Graph_Extractor" AND 
+  dgeProject.relativeName = "Dependency_Graph_Extractor"
+RETURN 
+  dep.fullyQualifiedName, count(dge) as depCount 
+ORDER BY depCount DESC
+```
+to get the declarations outside the Dependency_Graph_Extractor project,
+that are used by the Dependency_Graph_Extractor project
+together with their number of references.
+
 ## Building
 
 [![Alire](https://img.shields.io/endpoint?url=https://alire.ada.dev/badges/dependency_graph_extractor.json)](https://alire.ada.dev/crates/dependency_graph_extractor.html)
