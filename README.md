@@ -22,19 +22,24 @@ Note. Although Dependency Graph Extractor can analyse multiple projects, it can'
 
 ### Example
 
-Suppose we want to extract source code dependency information from the GPR project named `rejuvenation_lib.gpr`, 
-which is located in `C:\path\to\Renaissance-Ada\src\libraries\Rejuvenation_Lib`.
-Moreover, suppose we do not want have the `C:\path\to\Renaissance-Ada\src\libraries\Rejuvenation_Lib` prefix occurring in the generated GraphML file.
-To achieve this, we can run the Dependency Graph Extractor as follows:
-
+Suppose we want to extract source code dependency information from the GPR project named `rejuvenation.gpr`, 
+which is located in `C:\path\to\Renaissance-Ada\src\libraries\rejuvenation`.
+Moreover, suppose we do not want have the `C:\path\to\Renaissance-Ada\src\libraries\rejuvenation` prefix occurring in the generated GraphML file.
+To achieve this, we can run the Dependency Graph Extractor 
+directly from alire
+as follows:
 ```cmd
-dependency_graph_extractor.exe -o rejuvenation_lib.graphml -p C:\path\to\Renaissance-Ada\src\libraries\Rejuvenation_Lib C:\path\to\Renaissance-Ada\src\libraries\Rejuvenation_Lib\rejuvenation_lib.gpr
+alr run --args="-o rejuvenation.graphml -p C:\path\to\Renaissance-Ada\src\libraries\rejuvenation C:\path\to\Renaissance-Ada\src\libraries\rejuvenation\rejuvenation.gpr"
 ```
 
-Note we assume that either `dependency_graph_extractor.exe` is on the system PATH 
+Or just as a normal program:
+```cmd
+dependency_graph_extractor.exe -o rejuvenation.graphml -p C:\path\to\Renaissance-Ada\src\libraries\rejuvenation C:\path\to\Renaissance-Ada\src\libraries\rejuvenation\rejuvenation.gpr
+```
+when either `dependency_graph_extractor.exe` is on the system PATH 
 or the current directory is the `obj` directory of the Dependency_Graph_Extractor project.
 
-This will create the GraphML file `rejuvenation_lib.graphml` in the current directory.
+This will create the GraphML file `rejuvenation.graphml` in the current directory.
 
 ## Usage
 Open the generated `graphml` file with [Neo4j](https://neo4j.com) according to [the import instructions](https://neo4j.com/labs/apoc/4.1/import/graphml/).
