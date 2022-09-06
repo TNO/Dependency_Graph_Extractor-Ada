@@ -13,3 +13,6 @@ executables = ["dependency_graph_extractor"]
 
 [[depends-on]]
 libadalang = "^22.0.0"
+
+[depends-on.'case(os)'.windows]
+gnat_native = "/=12.1.2"  # see https://github.com/AdaCore/libadalang/issues/949 for more info
