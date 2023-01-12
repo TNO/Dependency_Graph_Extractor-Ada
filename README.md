@@ -181,7 +181,7 @@ The textual output is similar to
 1. [Install Alire](https://alire.ada.dev/docs/#installation).
 3. [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 4. Clone the Dependency Graph Extractor project: `git clone https://github.com/TNO/Dependency_Graph_Extractor-Ada.git`.
-5. Start the `PowerShell` terminal with `Alire` in the environment `PATH`.
+5. Start the `PowerShell` terminal with `Alire` in the environment `PATH` (installed by Alire by default on your desktop).
 6. Navigate to the directory containing the Dependency Graph Extractor.
 7. Ensure alire has the latest information by running `alr update --online` in that directory.
 6. Execute `alr build` in that directory.
