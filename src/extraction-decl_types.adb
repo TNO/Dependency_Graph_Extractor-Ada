@@ -15,7 +15,8 @@ package body Extraction.Decl_Types is
          return
            Get_Subp_Spec
              (Utilities.Get_Referenced_Decl
-                (Basic_Decl.As_Generic_Subp_Renaming_Decl.F_Renames));
+                (Basic_Decl.As_Generic_Subp_Renaming_Decl.F_Renames.
+                       F_Renamed_Object));
       else
          return Basic_Decl.P_Subp_Spec_Or_Null (Follow_Generic => True);
       end if;
