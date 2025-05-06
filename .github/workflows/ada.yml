@@ -15,6 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: alire-project/setup-alire@v4
+    - name: Private dependencies on windows - workaround for https://github.com/alire-project/alire/issues/1762
+      if: startsWith(matrix.os, 'windows')
+      run: alr settings --set dependencies.shared false
     - name: Build
       run: alr build
 
