@@ -4,14 +4,13 @@ with Extraction.Utilities;
 package body Extraction.Primitive_Subps is
 
    use type LAL.Analysis_Unit;
-   use type LALCO.Ada_Node_Kind_Type;
 
    procedure Extract_Nodes
      (Node : LAL.Ada_Node'Class; Graph : Graph_Operations.Graph_Context)
    is
    begin
       if Utilities.Is_Relevant_Basic_Decl (Node)
-        and then Node.Kind = LALCO.Ada_Type_Decl
+        and then Node.Kind in LALCO.Ada_Type_Decl
       then
          declare
             Type_Decl  : constant LAL.Type_Decl        := Node.As_Type_Decl;
@@ -34,7 +33,7 @@ package body Extraction.Primitive_Subps is
    is
    begin
       if Utilities.Is_Relevant_Basic_Decl (Node)
-        and then Node.Kind = LALCO.Ada_Type_Decl
+        and then Node.Kind in LALCO.Ada_Type_Decl
       then
          declare
             Type_Decl  : constant LAL.Type_Decl        := Node.As_Type_Decl;
