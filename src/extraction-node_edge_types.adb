@@ -225,7 +225,8 @@ package body Extraction.Node_Edge_Types is
            LALCO.Ada_Protected_Body | LALCO.Ada_Single_Protected_Decl =>
             return Node_Type_Ada_Protected_Declaration;
             --  Subprograms.
-         when LALCO.Ada_Abstract_Subp_Decl | LALCO.Ada_Subp_Decl |
+         when LALCO.Ada_Abstract_Subp_Decl | LALCO.Ada_Synthetic_Subp_Decl |
+           LALCO.Ada_Subp_Decl |
            LALCO.Ada_Expr_Function | LALCO.Ada_Null_Subp_Decl |
            LALCO.Ada_Subp_Body | LALCO.Ada_Subp_Renaming_Decl |
            LALCO.Ada_Subp_Body_Stub | LALCO.Ada_Generic_Subp_Decl |
