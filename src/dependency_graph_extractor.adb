@@ -1,5 +1,6 @@
 with Ada.Calendar;
 with Ada.Command_Line;
+with Ada.Exceptions;
 with Ada.Strings.Unbounded;
 with Ada.Text_IO;
 with GNATCOLL.VFS;
@@ -55,6 +56,13 @@ begin
    end;
 
    Ada.Text_IO.Put_Line
-     (Ada.Text_IO.Standard_Error,
+     ("Success in " &
       Duration'Image (Ada.Calendar.Clock - Start_Time));
+
+exception
+   when E : others =>
+      Ada.Text_IO.Put_Line (Ada.Text_IO.Standard_Error, "Error occurred");
+      Ada.Text_IO.Put_Line (Ada.Text_IO.Standard_Error,
+                            Ada.Exceptions.Exception_Message (E));
+      raise;
 end Dependency_Graph_Extractor;

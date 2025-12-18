@@ -100,6 +100,7 @@ package body Extraction.Decl_Types is
               Get_Subp_Spec (Source_Decl);
          begin
             if Source_Decl.Kind /= LALCO.Ada_Enum_Literal_Decl
+              and then Source_Decl.Kind /= LALCO.Ada_Synthetic_Char_Enum_Lit
               and then not Subp_Spec.Is_Null
             then
                declare

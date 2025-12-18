@@ -174,9 +174,11 @@ procedure Main is
                      or else Node.As_Identifier.P_Referenced_Decl.Kind = Ada_Generic_Subp_Instantiation
                      or else Node.As_Identifier.P_Referenced_Decl.Kind = Ada_Subp_Body_Stub
                      or else Node.As_Identifier.P_Referenced_Decl.Kind = Ada_Abstract_Subp_Decl
+                     or else Node.As_Identifier.P_Referenced_Decl.Kind = Ada_Synthetic_Subp_Decl
                      or else Node.As_Identifier.P_Referenced_Decl.Kind = Ada_Abstract_Formal_Subp_Decl
                      or else Node.As_Identifier.P_Referenced_Decl.Kind = Ada_Concrete_Formal_Subp_Decl
-                     or else Node.As_Identifier.P_Referenced_Decl.Kind = Ada_Enum_Literal_Decl) -- Enum literals are parameterless functions
+                     or else Node.As_Identifier.P_Referenced_Decl.Kind = Ada_Enum_Literal_Decl -- Enum literals are parameterless functions
+                     or else Node.As_Identifier.P_Referenced_Decl.Kind = Ada_Synthetic_Char_Enum_Lit)
            and then (Rejuvenation.Navigation.Get_Ancestor_Of_Type(Node, Ada_Generic_Package_Instantiation) = No_Ada_Node -- Skip designator in instantiation
                      or else Rejuvenation.Navigation.Get_Ancestor_Of_Type(Node, Ada_Param_Assoc) = No_Ada_Node
                      or else Rejuvenation.Navigation.Get_Ancestor_Of_Type(Node, Ada_Param_Assoc).As_Param_Assoc.F_Designator /= Node)
