@@ -216,7 +216,7 @@ package body Extraction.Node_Edge_Types is
             --  Packages.
          when LALCO.Ada_Package_Decl | LALCO.Ada_Package_Body_Stub |
            LALCO.Ada_Package_Body | LALCO.Ada_Package_Renaming_Decl |
-           LALCO.Ada_Generic_Package_Decl          |
+           LALCO.Ada_Generic_Package_Decl |
            LALCO.Ada_Generic_Package_Instantiation |
            LALCO.Ada_Generic_Package_Renaming_Decl =>
             return Node_Type_Ada_Package_Declaration;
@@ -225,18 +225,20 @@ package body Extraction.Node_Edge_Types is
            LALCO.Ada_Protected_Body | LALCO.Ada_Single_Protected_Decl =>
             return Node_Type_Ada_Protected_Declaration;
             --  Subprograms.
-         when LALCO.Ada_Abstract_Subp_Decl | LALCO.Ada_Subp_Decl |
+         when LALCO.Ada_Abstract_Subp_Decl | LALCO.Ada_Synthetic_Subp_Decl |
+           LALCO.Ada_Subp_Decl |
            LALCO.Ada_Expr_Function | LALCO.Ada_Null_Subp_Decl |
            LALCO.Ada_Subp_Body | LALCO.Ada_Subp_Renaming_Decl |
            LALCO.Ada_Subp_Body_Stub | LALCO.Ada_Generic_Subp_Decl |
            LALCO.Ada_Generic_Subp_Instantiation |
            LALCO.Ada_Generic_Subp_Renaming_Decl |
-           LALCO.Ada_Abstract_Formal_Subp_Decl  |
-           LALCO.Ada_Concrete_Formal_Subp_Decl  =>
+           LALCO.Ada_Abstract_Formal_Subp_Decl |
+           LALCO.Ada_Concrete_Formal_Subp_Decl =>
             return Node_Type_Ada_Subprogram_Declaration;
          when LALCO.Ada_Entry_Decl | LALCO.Ada_Entry_Body =>
             return Node_Type_Ada_Entry_Declaration;
-         when LALCO.Ada_Enum_Literal_Decl =>
+         when LALCO.Ada_Enum_Literal_Decl |
+           LALCO.Ada_Synthetic_Char_Enum_Lit =>
             return Node_Type_Ada_Enum_Literal_Declaration;
             --  Tasks.
          when LALCO.Ada_Task_Type_Decl | LALCO.Ada_Task_Body_Stub |
@@ -244,7 +246,7 @@ package body Extraction.Node_Edge_Types is
             return Node_Type_Ada_Task_Declaration;
             --  Types.
          when LALCO.Ada_Type_Decl | LALCO.Ada_Subtype_Decl |
-           LALCO.Ada_Incomplete_Type_Decl        |
+           LALCO.Ada_Incomplete_Type_Decl |
            LALCO.Ada_Incomplete_Tagged_Type_Decl =>
             return Node_Type_Ada_Type_Declaration;
          when others =>

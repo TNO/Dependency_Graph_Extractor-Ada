@@ -191,13 +191,15 @@ package body Extraction.Graph_Operations is
         GW.Attribute_Value_Sets.Empty)
    is
    begin
-      if Target_Decl.P_Defining_Names'Length = 1 then
-         Graph.Write_Edge
-           (Source_Name, Source_Decl, Target_Decl.P_Defining_Name, Target_Decl,
-            Edge_Ty, Edge_Attrs);
-      else
-         raise Internal_Extraction_Error
-           with "Target declaration with single defining name expected";
+      if not Target_Decl.Is_Null then
+         if Target_Decl.P_Defining_Names'Length = 1 then
+            Graph.Write_Edge
+              (Source_Name, Source_Decl, Target_Decl.P_Defining_Name,
+               Target_Decl, Edge_Ty, Edge_Attrs);
+         else
+            raise Internal_Extraction_Error
+              with "Target declaration with single defining name expected";
+         end if;
       end if;
    end Write_Edge;
 

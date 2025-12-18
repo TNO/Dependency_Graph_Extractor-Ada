@@ -23,8 +23,8 @@ package body Extraction.Bodies_For_Entries is
             Accept_Stmt : constant LAL.Accept_Stmt := Node.As_Accept_Stmt;
             Task_Body   : constant LAL.Basic_Decl  :=
               Utilities.Get_Parent_Basic_Decl (Accept_Stmt);
-            Entry_Decl : constant LAL.Basic_Decl :=
-              Utilities.Get_Referenced_Decl (Accept_Stmt.F_Name);
+            Entry_Decl : constant LAL.Entry_Decl :=
+              Accept_Stmt.P_Corresponding_Entry;
          begin
             Graph.Write_Edge
               (Entry_Decl, Task_Body,

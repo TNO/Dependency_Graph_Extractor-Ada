@@ -31,11 +31,13 @@ package body Extraction.Renamings is
             return
               Basic_Decl.As_Package_Renaming_Decl.F_Renames.F_Renamed_Object;
          when LALCO.Ada_Generic_Package_Renaming_Decl =>
-            return Basic_Decl.As_Generic_Package_Renaming_Decl.F_Renames;
+            return Basic_Decl.As_Generic_Package_Renaming_Decl.F_Renames.
+              F_Renamed_Object;
          when LALCO.Ada_Subp_Renaming_Decl =>
             return Basic_Decl.As_Subp_Renaming_Decl.F_Renames.F_Renamed_Object;
          when LALCO.Ada_Generic_Subp_Renaming_Decl =>
-            return Basic_Decl.As_Generic_Subp_Renaming_Decl.F_Renames;
+            return Basic_Decl.As_Generic_Subp_Renaming_Decl.F_Renames.
+              F_Renamed_Object;
          when LALCO.Ada_Exception_Decl =>
             return Basic_Decl.As_Exception_Decl.F_Renames.F_Renamed_Object;
          when LALCO.Ada_Object_Decl =>
